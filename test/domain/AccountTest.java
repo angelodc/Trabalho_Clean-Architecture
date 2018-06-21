@@ -5,25 +5,28 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class AccountTest {
-	Account a1 = new Account(12345, 54321, 1000.0, 1200.0);
-	
+
 	@Test
 	void testValidatePIN() {
-		assertEquals(true, a1.validatePIN(54321));
-		
+		Account conta = new Account(12345, 54321, 1000.0, 1200.0);
+		assertEquals(true, conta.validatePIN(54321));
 	}
 
 	@Test
 	void testCredit() {
-		
-		//assertEquals(a1.getAvailableBalance(),0);
-		// ainda não funcionacorretamente
-		
+		Account aconta = new Account(12345, 54321, 1000.0, 1200.0);
+		double valorAdicionado =aconta.getTotalBalance();
+		aconta.credit(100);
+		assertEquals(valorAdicionado+100,aconta.getTotalBalance());
 	}
 
 	@Test
 	void testDebit() {
-		fail("Not yet implemented");
+		Account conta = new Account(12345, 54321, 1000.0, 1200.0);
+		double valorAdicionado =conta.getTotalBalance();
+		conta.debit(100);
+		assertEquals(valorAdicionado-100,conta.getTotalBalance());
+		
 	}
 
 }
